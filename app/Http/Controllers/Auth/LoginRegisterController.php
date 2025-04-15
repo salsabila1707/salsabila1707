@@ -38,7 +38,7 @@ if ($request->user()->usertype== 'admin'){
     return redirect('admin/dashboard')->withSuccess('You have successFully registered & loggin ini');
 }
 
-return redirect()->intended(route(dashboard));
+return redirect()->intended(route('dashboard'));
 }
 
 public function login ()
@@ -53,7 +53,7 @@ public function authenticate(Request $request)
         'passwoard'=>'required'
     ]);
     
-if (Auth::attempt($crendentials)){
+if (Auth::attempt($credentials)){
   $request->session()->regenerate();
   if ($request->user()->usertype=='admin'){
     return redirect('admin/dashboard')->withSuccess('You have successfully logged in!');
